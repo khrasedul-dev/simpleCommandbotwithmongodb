@@ -25,15 +25,15 @@ const  sc = new Schema({
     },
 website: {
         type: String
-    }
+    },
 
 presale: {
         type: String
-    }
+    },
 
 price: {
         type: String
-    }
+    },
 
 audit: {
         type: String
