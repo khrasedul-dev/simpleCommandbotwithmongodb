@@ -35,28 +35,28 @@ bot.start((ctx)=>{
 bot.command('pinksale',ctx=>{
 
     dbModel.find().then((data)=>{
-        ctx.reply(data[0].pinksale)
+        ctx.reply(data[0].pinksale || 'Message set not yet')
     }).catch((e)=>console.log(e))
 
 })
 bot.command('timelunch',ctx=>{
 
     dbModel.find().then((data)=>{
-        ctx.reply(data[0].timelunch)
+        ctx.reply(data[0].timelunch || 'Message set not yet')
     }).catch((e)=>console.log(e))
 
 })
 bot.command('launch',ctx=>{
 
     dbModel.find().then((data)=>{
-        ctx.reply(data[0].launch)
+        ctx.reply(data[0].launch || 'Message set not yet')
     }).catch((e)=>console.log(e))
 
 })
 bot.command('Tokenomics',ctx=>{
 
     dbModel.find().then((data)=>{
-        ctx.reply(data[0].Tokenomics)
+        ctx.reply(data[0].Tokenomics || 'Message set not yet')
     }).catch((e)=>console.log(e))
 
 })
