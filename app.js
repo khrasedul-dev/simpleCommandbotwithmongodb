@@ -22,7 +22,23 @@ const  sc = new Schema({
     },
     Tokenomics: {
         type: String
+    },
+website: {
+        type: String
     }
+
+presale: {
+        type: String
+    }
+
+price: {
+        type: String
+    }
+
+audit: {
+        type: String
+    }
+
 },{versionKey: false})
 
 const dbModel = mongoose.model("data", sc );
@@ -60,6 +76,42 @@ bot.command('Tokenomics',ctx=>{
     }).catch((e)=>console.log(e))
 
 })
+
+
+bot.command('website',ctx=>{
+
+    dbModel.find().then((data)=>{
+        ctx.reply(data[0].website || 'Message set not yet')
+    }).catch((e)=>console.log(e))
+
+})
+
+
+bot.command('presale',ctx=>{
+
+    dbModel.find().then((data)=>{
+        ctx.reply(data[0].presale || 'Message set not yet')
+    }).catch((e)=>console.log(e))
+
+})
+
+
+bot.command('audit',ctx=>{
+
+    dbModel.find().then((data)=>{
+        ctx.reply(data[0].audit || 'Message set not yet')
+    }).catch((e)=>console.log(e))
+
+})
+
+bot.command('price',ctx=>{
+
+    dbModel.find().then((data)=>{
+        ctx.reply(data[0].price || 'Message set not yet')
+    }).catch((e)=>console.log(e))
+
+})
+
 
 bot.command('addpinksale',ctx=>{
 
@@ -124,6 +176,80 @@ bot.command('addTokenomics',ctx=>{
         const id = data[0]._id
 
         dbModel.updateOne({_id: id}, {Tokenomics: input}).then(()=>{
+            ctx.reply("Update command message")
+        }).catch((e)=>console.log(e))
+        
+    }).catch((e)=>console.log(e))
+
+})
+
+
+bot.command('addwebsite',ctx=>{
+
+    let input = ctx.update.message.text
+    input = input.replace('/addwebsite','')
+
+    dbModel.find().then((data)=>{
+        
+        const id = data[0]._id
+
+        dbModel.updateOne({_id: id}, {website: input}).then(()=>{
+            ctx.reply("Update command message")
+        }).catch((e)=>console.log(e))
+        
+    }).catch((e)=>console.log(e))
+
+})
+
+
+
+bot.command('addaudit',ctx=>{
+
+    let input = ctx.update.message.text
+    input = input.replace('/addaudit','')
+
+    dbModel.find().then((data)=>{
+        
+        const id = data[0]._id
+
+        dbModel.updateOne({_id: id}, {audit: input}).then(()=>{
+            ctx.reply("Update command message")
+        }).catch((e)=>console.log(e))
+        
+    }).catch((e)=>console.log(e))
+
+})
+
+
+
+bot.command('addpresale',ctx=>{
+
+    let input = ctx.update.message.text
+    input = input.replace('/addpresale','')
+
+    dbModel.find().then((data)=>{
+        
+        const id = data[0]._id
+
+        dbModel.updateOne({_id: id}, {presale: input}).then(()=>{
+            ctx.reply("Update command message")
+        }).catch((e)=>console.log(e))
+        
+    }).catch((e)=>console.log(e))
+
+})
+
+
+bot.command('addprice',ctx=>{
+
+    let input = ctx.update.message.text
+    input = input.replace('/addprice','')
+
+    dbModel.find().then((data)=>{
+        
+        const id = data[0]._id
+
+        dbModel.updateOne({_id: id}, {price: input}).then(()=>{
             ctx.reply("Update command message")
         }).catch((e)=>console.log(e))
         
